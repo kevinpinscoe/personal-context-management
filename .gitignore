@@ -1,0 +1,28 @@
+# OS artifacts
+**/.DS_Store
+**/Thumbs.db
+
+# Claude Code / AI tools
+**/.claude
+**/.claude/settings.local.json
+**/.codex
+
+# Resume scripts (never commit these)
+**/resume.sh
+**/resume.txt
+
+# Obsidian workspace state
+**/.obsidian/workspace.json
+**/.obsidian/graph.json
+**/.obsidian/plugins/*/data.json
+
+# Trash
+**/.trash/
+
+# Editor artifacts
+**/*.swp
+
+# Python artifacts
+**/*.pyc
+**/*.pyo
+**/__pycache__/
