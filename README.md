@@ -72,27 +72,35 @@ Obsidian vault. The goal is to define repeatable patterns for:
 - **Human judgment stays on top**: Automation can maintain context, but I still
   decide priorities, direction, and final output.
 
-## Possible Vault Components
+## Core Model
 
-The exact structure may evolve, but a PCM vault can include files such as:
+Folders are for storage.
+MOCs are for navigation.
+Links are for relationships.
+Classification is for orientation.
 
-- `me.md`: identity, preferences, working style, and durable personal context
-- `current-projects.md`: active projects and open loops
-- `preferences.md`: tool, writing, communication, and workflow preferences
-- `active-decisions.md`: recent decisions and the reasons behind them
-- `task-board.md`: current priorities, waiting items, and completed work
-- `daily-notes/`: daily context, handoffs, and session summaries
-- `people/`: notes about collaborators, contacts, and relationship context
-- `environments.md`: machines, operating systems, tools, and constraints
+A note should usually live in one simple place, but it may be linked from many
+topic pages. This avoids forcing every note into a single rigid hierarchy when
+the same note may belong to several subjects.
 
-## Source Notes
+## Repository Layout
 
-The initial thinking for this repo comes from the two Markdown files currently in
-this directory:
-
-- `what-is-pcm.md`
-- `pkm-is-dead-long-live-pcm-obsidian-is-different-now.md`
-
-Together, they define the repo's direction: move beyond maintaining a personal
-knowledge library and build a practical operating layer for Obsidian, AI tools,
-and day-to-day work.
+```
+├── archive/          # Retired or superseded content
+├── attachments/      # Images, PDFs, and other supporting files
+├── ingest-holding/   # Temporary staging for ingest candidates
+├── ingest-points/    # Ingest pipeline configuration (one file per source)
+├── journal/          # Dated daily notes (YYYY-MM-DD.md)
+├── lcc/              # Library of Congress Classification outlines
+├── moc/              # Maps of content
+├── notes/            # Evergreen notes
+├── obsidian/         # AI-distilled output mirroring vault categories
+├── references/       # Source summaries and external research
+├── rules/            # Ground rules — naming conventions and layout
+├── runbooks/         # Step-by-step operational procedures
+├── templates/        # Reusable note templates
+├── uncategorized/    # Notes without a clear home — triage regularly
+├── home.md           # Vault entry point
+├── interests.md      # Personal interests and focus areas
+└── interests.yaml    # Machine-readable interests for the ingest pipeline
+```
