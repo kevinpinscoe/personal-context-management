@@ -223,6 +223,13 @@ Key rules:
 This knowledge base uses a Library of Congress Classification (LCC)-inspired
 top-level map.
 
+Why use a classification? Because naming is hard. Instead of inventing my own
+subject system, I wanted to reuse an established classification scheme.
+Classifications help me place notes into broad subject areas, supplement Maps
+of Content, and provide structured metadata for building knowledge-relationship
+graphs. A classification gives me a stable subject scaffold, while MOCs give me
+human-curated navigation. They complement each other.
+
 The authoritative Library of Congress Classification schedules are maintained
 by the Library of Congress:
 
