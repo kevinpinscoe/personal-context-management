@@ -3,6 +3,18 @@
 This repository collects my workflow for building a Personal Context Management
 (PCM) system in Obsidian.
 
+In my model, the chief difference between PCM and PKM is purpose. PCM is an
+evolving research library: it gathers ideas, evidence, possibilities, and
+connections that may inform what I do next. PKM is more practical and
+operational: it records what I built, what I did, what I purchased, the
+decisions I made, and how I operate and maintain what I have.
+
+Put another way, PCM reads more like a cookbook of possibilities, while PKM
+reads more like the owner's manual for my actual life, tools, projects, and
+systems.
+
+PCM is prospective and exploratory. PKM is retrospective and operational.
+
 PCM is about capturing what matters right now so tools, people, and AI can work
 with the right background. It is not just a knowledge archive. It is an
 operating context for current goals, constraints, preferences, active projects,
