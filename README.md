@@ -10,34 +10,6 @@ PCM is primarily prospective and exploratory. PKM is primarily retrospective and
 
 PCM is not merely a knowledge archive. It maintains a broader body of potentially useful context while surfacing what matters now: current goals, constraints, preferences, active projects, recent decisions, open questions, and the working assumptions that allow people, tools, and AI to provide useful assistance.
 
-## PKM vs PCM
-
-Personal Knowledge Management (PKM) is about managing what I know:
-
-- notes
-- references
-- research
-- bookmarks
-- project docs
-- runbooks
-- troubleshooting history
-
-Personal Context Management (PCM) is about managing what should already be known
-before helping me act:
-
-- who I am
-- how I work
-- what I am focused on now
-- what constraints matter
-- what decisions have already been made
-- what preferences should guide output
-- what context an AI agent needs to operate usefully
-
-A simple rule:
-
-> If it teaches me something, it belongs in PKM. If it changes how assistance
-> should behave, it belongs in PCM.
-
 ## Why Obsidian
 
 Obsidian is the workspace for this system because it is local-first, Markdown
