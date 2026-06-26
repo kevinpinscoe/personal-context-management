@@ -1,24 +1,14 @@
 # Personal Context Management
 
-This repository collects my workflow for building a Personal Context Management
-(PCM) system in Obsidian.
+This repository documents my workflow for building a Personal Context Management (PCM) system in Obsidian.
 
-In my model, the chief difference between PCM and PKM is purpose. PCM is an
-evolving research library: it gathers ideas, evidence, possibilities, and
-connections that may inform what I do next. PKM is more practical and
-operational: it records what I built, what I did, what I purchased, the
-decisions I made, and how I operate and maintain what I have.
+In my model, the chief difference between PCM and PKM is purpose. PCM is an evolving research and context library. It gathers ideas, evidence, possibilities, questions, and connections that may inform what I learn, decide, or do next. PKM is more practical and operational: it records what I built, what I did, what I purchased, the decisions I made, and how I operate and maintain the systems and projects already part of my life.
 
-Put another way, PCM reads more like a cookbook of possibilities, while PKM
-reads more like the owner's manual for my actual life, tools, projects, and
-systems.
+Put another way, PCM reads more like a cookbook of possibilities, while PKM reads more like the owner’s manual for my actual tools, projects, and systems.
 
-PCM is prospective and exploratory. PKM is retrospective and operational.
+PCM is primarily prospective and exploratory. PKM is primarily retrospective and operational.
 
-PCM is about capturing what matters right now so tools, people, and AI can work
-with the right background. It is not just a knowledge archive. It is an
-operating context for current goals, constraints, preferences, active projects,
-recent decisions, and the working assumptions that shape useful assistance.
+PCM is not merely a knowledge archive. It maintains a broader body of potentially useful context while surfacing what matters now: current goals, constraints, preferences, active projects, recent decisions, open questions, and the working assumptions that allow people, tools, and AI to provide useful assistance.
 
 ## PKM vs PCM
 
