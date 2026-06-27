@@ -1,4 +1,4 @@
-# CLAUDE.md — personal-context-management-private
+# CLAUDE.md — personal-context-management
 
 Guidance for Claude Code when working in this repository.
 
@@ -10,11 +10,13 @@ Rules in `rules/` are ground documents for this knowledge base. **They are manda
 |---|---|
 | `rules/file-naming-rules.md` | File and directory naming conventions |
 | `rules/rules-directory-layout.md` | Required directory structure and file placement |
+| `rules/moc-section-order.md` | Required section order within every MOC file |
 
 ### How to apply the rules
 
 - Before creating or moving any file, check `rules/file-naming-rules.md`. Names must be lowercase, hyphen-separated, no spaces. Exceptions: `README.md`, `AGENTS.md`, `RUNBOOK.md`.
 - Before adding or restructuring directories, check `rules/rules-directory-layout.md`. Content must land in the correct functional directory.
+- Before creating or editing any MOC file, check `rules/moc-section-order.md`. Sections must appear in the order: Overview → Child MOCs → Notes → Related MOCs. Child MOCs must precede Notes.
 - If a request would violate a rule in `rules/`, **stop and challenge the request before making any change.** State which rule would be violated and ask the human to confirm or override before proceeding.
 
 ### Challenging a rule violation

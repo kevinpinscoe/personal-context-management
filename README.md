@@ -189,6 +189,10 @@ Key rules:
 - Before creating or moving any file, check `rules/file-naming-rules.md`.
 - Before adding or restructuring directories, check
   `rules/rules-directory-layout.md`.
+- Before creating or editing any MOC file, check `rules/moc-section-order.md`.
+  Sections must appear in this order: Overview → Child MOCs → Notes → Related
+  MOCs. Child MOCs must precede Notes so readers can drill down before reading
+  individual notes.
 - If a request would violate a rule, stop and challenge the request before
   making any change.
 
@@ -564,6 +568,35 @@ The AI distills matched content down to actionable criteria only:
 
 The distilled output is written to the `obsidian/` directory as Obsidian-ready
 Markdown knowledge pages, ready to be dropped into the live vault.
+
+### Curation strategy — prefer human-curated sources
+
+A human can only review so much, so ingestion works best when narrowed to
+**sources you deliberately curate** rather than firehoses. Ingesting everything
+leads to miscategorised notes and content that should never have entered the PCM.
+
+The preferred model:
+
+1. **Read in a curated reader.** Subscribe all feeds — external subscriptions
+   and any home-generated feeds — into one reader. Use an Unread filter so
+   articles leave the view once read.
+2. **Curate by marking.** When an article is worth keeping, **click Like (or
+   equivalent).** That one action — not "everything I read" — is the unit of
+   ingestion. Only marked articles are ever distilled.
+3. **The pipeline ingests the marked set**, then **clears the mark** so the
+   item ages out normally.
+
+This keeps ingestion opt-in, human-curated, and one-click.
+
+**Choosing a reader tool.** The pipeline needs to query the reader headlessly
+(no interactive login each run). A self-hosted RSS reader with scoped API key
+support — such as [oksskolten](https://github.com/babarot/oksskolten) — is the
+cleanest fit: authenticate with a revocable token, query `GET /api/articles?liked=1`,
+and never store a personal password. Readers that expose their curation signals
+(like/bookmark) only through a JWT-authenticated REST API are harder to automate;
+MCP-based readers typically do not expose the like signal at all.
+
+See `ingest-points/oksskolten.md` for a worked example of this pattern.
 
 ## Design Principles
 

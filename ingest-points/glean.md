@@ -1,71 +1,54 @@
 # Ingest Point: Glean RSS Reader (MCP)
 
-## Summary
+> **⚠️ RETIRED for PCM ingest.** Glean is superseded by a self-hosted RSS reader
+> with proper API key support — see [oksskolten.md](oksskolten.md). This file is kept
+> for history. Do not resume the REST-auth work described below.
 
-[Glean](https://glean.kevininscoe.com) is a self-hosted RSS reader with a native MCP interface. The PCM pipeline connects to it via MCP rather than parsing local files — the AI agent calls Glean's MCP tools directly to search, list, and retrieve articles from subscriptions.
+## Why it was retired
 
-## Credential Status
+Glean has two interfaces with two different auth systems:
 
-**Token is in 1Password.** Migration to OpenBao is pending — see `../TODO.md`.
+| Surface | Accepts | Exposes the Like (curation) signal? |
+|---|---|---|
+| **MCP** | long-lived API token | ❌ No — only `is_read` |
+| **REST** | JWT from interactive login only | ✅ Yes — `GET /api/entries?is_liked=true` |
 
-## Instance
+The curation model requires querying the liked set headlessly. The REST API
+that exposes likes only accepts a JWT obtained through an interactive login —
+there is no long-lived API token for REST. This means the pipeline cannot run
+without storing a personal password, which is unacceptable.
 
-| Item | Value |
-|---|---|
-| **URL** | https://glean.kevininscoe.com |
-| **MCP endpoint** | https://glean.kevininscoe.com/mcp/mcp |
-| **Auth** | Bearer token (`Authorization: Bearer <token>`) |
-| **Token location** | 1Password (migration to OpenBao pending) |
+The MCP interface accepts the API token but cannot see likes at all, so it
+cannot determine which articles the human has curated for ingest.
 
-## MCP Configuration
+## What it taught us
 
-```json
-{
-  "mcpServers": {
-    "glean": {
-      "url": "https://glean.kevininscoe.com/mcp/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_API_TOKEN"
-      }
-    }
-  }
-}
-```
+The right tool exposes the curation signal through its API using a scoped,
+revocable token — not through a session JWT that requires an interactive login
+to obtain. See [oksskolten.md](oksskolten.md) for a reader that gets this right.
 
-## Available MCP Tools
+## Original pipeline (for reference)
 
-| Tool | Purpose |
-|---|---|
-| `search_entries` | Search articles by keyword |
-| `get_entry` | Get full article details by ID |
-| `list_entries_by_date` | List articles within a date range |
-| `list_subscriptions` | List all subscriptions in the reader |
+Before the retirement decision, the intended flow was:
 
-## PCM Pipeline Usage
+1. Authenticate via `POST /api/auth/login` → JWT.
+2. Query `GET /api/entries?is_liked=true`.
+3. Distill each entry into an Obsidian note.
+4. Clear the like via `DELETE /api/entries/{id}/reaction` after distillation.
 
-Unlike the file-based ingest points, Glean is queried live via MCP:
-
-1. Agent calls `list_subscriptions` to understand available feeds.
-2. Agent calls `list_entries_by_date` or `search_entries` to find candidate articles.
-3. Agent calls `get_entry` to retrieve full article content.
-4. Article is transformed into an Obsidian note under `../obsidian/from-glean/`.
-5. No local SQLite cleanup required — Glean manages its own read/unread state.
-
-## Preprocessing Notes
-
-- Use `search_entries` with interest keywords rather than ingesting all articles — Glean may have high volume across all subscriptions.
-- `list_entries_by_date` is useful for bounded daily/weekly ingestion runs.
-- Interest/selection criteria (which keywords, which subscriptions to prioritize) to be defined alongside the general pipeline selection logic — see `../TODO.md`.
+The pattern is sound — the auth mechanism is what made it unworkable headlessly.
 
 ## Example Transformation Output (Obsidian note)
 
 ```markdown
 ---
+title: "Article Title"
 source: glean
-subscription: "Example Feed Name"
-date: 2026-06-13
+date: 2026-06-22
 url: https://example.com/article
-tags: [ingest/glean, ingest/rss]
+sources:
+  - https://example.com/article (glean, liked)
+tags: [ingest/glean, ingest/rss, pcm-output]
 ---
 
 # Article Title

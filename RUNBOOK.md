@@ -5,7 +5,7 @@
 | Field | Value |
 |---|---|
 | **Owner** | Kevin P. Inscoe |
-| **Last Updated** | 2026-06-13 |
+| **Last Updated** | 2026-06-27 |
 | **Last Tested** | 2026-06-13 |
 | **Expected Duration** | 5–30 minutes depending on task |
 | **Risk Level** | Low |
@@ -54,6 +54,19 @@ healthy.
 ---
 
 ## Step-by-Step Procedure
+
+### Step 0 — Check rules before creating files
+
+Before creating or moving any file, review the rules in `rules/`:
+
+- `rules/file-naming-rules.md` — names must be lowercase, hyphen-separated, no spaces
+- `rules/rules-directory-layout.md` — content must land in the correct functional directory
+- `rules/moc-section-order.md` — MOC files must follow Overview → Child MOCs → Notes → Related MOCs
+
+If unsure which directory a file belongs in, check the placement rules table in
+`rules/rules-directory-layout.md`.
+
+---
 
 ### Step 1 — Add a vault template file
 
